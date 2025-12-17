@@ -1,0 +1,29 @@
+.custom-footer {
+    background-color: #376899;
+    width: 100%;
+    padding: 30px 0 20px;
+    margin-top: 60px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.custom-footer .container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.custom-footer span.text-white {
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.custom-footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+}

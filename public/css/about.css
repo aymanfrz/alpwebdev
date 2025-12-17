@@ -1,0 +1,257 @@
+/* About Page Specific Styles */
+body.page-container {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main.content-area {
+    flex: 1;
+    background: white;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #376899 0%, #2c5282 100%);
+    color: white;
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.page-header .lead {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Content Sections */
+.section-title {
+    color: #2c5282;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #376899;
+    display: inline-block;
+    font-size: 1.8rem;
+}
+
+/* Info Card */
+.info-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    height: 100%;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.info-card:hover {
+    border-color: #376899;
+    box-shadow: 0 10px 25px rgba(55, 104, 153, 0.15);
+    transform: translateY(-5px);
+}
+
+.info-card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #376899 0%, #2c5282 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.info-card h5 {
+    color: #2c5282;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-list li {
+    padding: 1.2rem 1.2rem 1.2rem 4rem;
+    margin-bottom: 1rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border-left: 4px solid #376899;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.feature-list li:hover {
+    transform: translateX(5px);
+    background: #f1f5f9;
+}
+
+.feature-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 1.5rem;
+    top: 1.2rem;
+    color: #376899;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.feature-list li strong {
+    color: #2c5282;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.feature-list li p {
+    color: #4a5568;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* Benefit Cards */
+.benefit-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-color: #376899;
+}
+
+.benefit-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #376899 0%, #2c5282 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.benefit-card h5 {
+    color: #2c5282;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* How It Works */
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #376899 0%, #2c5282 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0 auto 1.5rem;
+}
+
+.row.text-center h5 {
+    color: #2c5282;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+/* Contact CTA */
+.contact-cta {
+    background: linear-gradient(135deg, #376899 0%, #2c5282 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    margin-top: 3rem;
+}
+
+.contact-cta h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.contact-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+.btn-light {
+    background: white;
+    color: #376899;
+    border: none;
+    padding: 10px 28px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-light:hover {
+    background: #f8f9fa;
+    color: #2c5282;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .page-header .lead {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    .feature-list li {
+        padding: 1rem 1rem 1rem 3.5rem;
+    }
+    
+    .feature-list li:before {
+        left: 1rem;
+    }
+    
+    .benefit-card, .info-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}

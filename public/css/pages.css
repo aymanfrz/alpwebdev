@@ -1,0 +1,11 @@
+.page-container {
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    background-color: white;
+    flex-grow: 1;
+}
