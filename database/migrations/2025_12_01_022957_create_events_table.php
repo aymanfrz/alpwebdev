@@ -15,10 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->dateTime('date');
+            $table->date('start_date');
+            $table->time('start_time');
             $table->string('location');
-            $table->string('picture');
+            $table->string('speaker_name')->nullable();
+            $table->string('picture')->nullable();
+            $table->integer('price')->default(0);
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
+
+            $table->foreignId('event_category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('bank_account_id')->nullable()->constrained()->nullOnDelete();
         });
     }
 

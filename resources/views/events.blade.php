@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Events - Campus Event System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -43,7 +44,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <!-- Active Tags -->
                 <div class="mt-3">
                     <span class="badge tag-badge bg-primary me-2 mb-2">
@@ -64,56 +65,77 @@
                 </div>
             </div>
 
-            <!-- Events Grid -->
+            @auth
+                @if (auth()->user()->role_id == 1)
+                    <a href="{{ route('admin.events.create') }}" class="btn btn-primary mb-4">
+                        + Create Event
+                    </a>
+                @endif
+            @endauth
+
+            <!--Events-->
             <div class="row g-4">
-                @for($i = 1; $i <= 6; $i++)
-                <div class="col-md-4">
-                    <div class="card event-card h-100">
-                        <div class="card-header bg-transparent border-bottom-0 pt-3">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <span class="badge event-category bg-primary">Teknologi</span>
-                                <span class="badge event-status bg-success">Gratis</span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Seminar Teknologi AI {{ $i }}</h5>
-                            <p class="card-text text-muted">Belajar tentang perkembangan AI terbaru dan penerapannya dalam berbagai industri.</p>
-                            
-                            <div class="event-details mb-3">
-                                <div class="detail-item mb-2">
-                                    <i class="bi bi-calendar me-2 text-primary"></i>
-                                    <span>Maret {{ 10 + $i }}, 2024</span>
+                @for ($i = 1; $i <= 6; $i++)
+                    <div class="col-md-4">
+                        @foreach ($events as $event)
+                            <div class="event-item">
+
+                                <h5>{{ $event->title }}</h5>
+
+                                <p>
+                                    {{ $event->description }}
+                                </p>
+
+                                <div class="event-meta">
+                                    <span>
+                                        {{ \Carbon\Carbon::parse($event->start_date)->translatedFormat('d F Y') }}
+                                    </span>
+
+                                    <span>
+                                        {{ $event->start_time }}
+                                    </span>
+
+                                    <span>
+                                        {{ $event->location }}
+                                    </span>
+
+                                    @if ($event->speaker_name)
+                                        <span>
+                                            {{ $event->speaker_name }}
+                                        </span>
+                                    @endif
                                 </div>
-                                <div class="detail-item mb-2">
-                                    <i class="bi bi-clock me-2 text-primary"></i>
-                                    <span>14:00 - 16:00 WIB</span>
-                                </div>
-                                <div class="detail-item mb-2">
-                                    <i class="bi bi-geo-alt me-2 text-primary"></i>
-                                    <span>Auditorium Utama</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="bi bi-person me-2 text-primary"></i>
-                                    <span>Dr. Jane Smith (AI Researcher)</span>
-                                </div>
-                            </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div class="participants">
-                                    <i class="bi bi-people text-muted"></i>
-                                    <small class="text-muted ms-1">45/100 Terdaftar</small>
-                                </div>
-                                <a href="#" class="btn btn-primary btn-sm">
-                                    <i class="bi bi-eye me-1"></i>Lihat Detail
+                                <a href="{{ route('eventDetail', $event->id) }}" class="btn btn-primary mt-2">
+                                    Detail
                                 </a>
+                                @auth
+                                    @if (auth()->user()->role_id == 1)
+                                        <div class="d-flex gap-2 mt-2">
+                                            <a href="{{ route('admin.events.edit', $event->id) }}"
+                                                class="btn btn-warning btn-sm">
+                                                Edit
+                                            </a>
+
+                                            <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST"
+                                                onsubmit="return confirm('Yakin hapus event ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                @endauth
+
                             </div>
-                        </div>
+                        @endforeach
+
                     </div>
-                </div>
                 @endfor
             </div>
 
-            <!-- Pagination -->
+            <!--Pagination-->
             <nav aria-label="Event pagination" class="mt-5">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
@@ -128,7 +150,6 @@
                 </ul>
             </nav>
 
-            <!-- Registration CTA -->
             <div class="registration-cta mt-5 p-5 text-center rounded">
                 <h3 class="mb-3">Ingin Mengorganisir Event?</h3>
                 <p class="mb-4">Daftar sebagai organizer dan mulai kelola event kampus Anda sekarang.</p>
@@ -151,4 +172,5 @@
         });
     </script>
 </body>
+
 </html>

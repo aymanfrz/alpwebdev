@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Home - Campus Event System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -73,42 +74,20 @@
                 <div class="row g-4">
                     <div class="col-md-6">
                         <div class="card event-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <h5 class="card-title fw-bold mb-0">Seminar Teknologi AI</h5>
-                                    <span class="badge-event bg-primary">Teknologi</span>
+                            @foreach ($featuredEvents as $event)
+                                <div class="event-card">
+                                    <h4>{{ $event->title }}</h4>
+                                    <p>
+                                        {{ $event->description }}
+                                    </p>
+                                    <span class="event-date">
+                                        {{ \Carbon\Carbon::parse($event->start_date)->translatedFormat('d F Y') }}
+                                    </span>
+                                    <a href="{{ route('eventDetail', $event->id) }}" class="btn btn-primary mt-2">
+                                        Detail
+                                    </a>
                                 </div>
-                                <p class="card-text text-muted mb-3">
-                                    Belajar tentang perkembangan AI terbaru dan penerapannya dalam industri.
-                                </p>
-                                <div class="event-details d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="bi bi-calendar text-primary me-1"></i>
-                                        <small>15 Maret 2024</small>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card event-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <h5 class="card-title fw-bold mb-0">Business Case Competition</h5>
-                                    <span class="badge-event bg-warning text-dark">Bisnis</span>
-                                </div>
-                                <p class="card-text text-muted mb-3">
-                                    Kompetisi internasional untuk mahasiswa dengan sertifikat resmi.
-                                </p>
-                                <div class="event-details d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="bi bi-calendar text-primary me-1"></i>
-                                        <small>20 Maret 2024</small>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Detail</a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -140,7 +119,8 @@
             <!-- Call to Action -->
             <div class="text-center mt-5">
                 <h4 class="mb-3">Siap mengelola event kampus Anda?</h4>
-                <p class="text-muted mb-4">Bergabung dengan sistem kami untuk pengalaman manajemen event yang lebih baik</p>
+                <p class="text-muted mb-4">Bergabung dengan sistem kami untuk pengalaman manajemen event yang lebih baik
+                </p>
                 <a href="{{ url('/about') }}" class="btn btn-primary px-4">
                     <i class="bi bi-info-circle me-2"></i>Pelajari Lebih Lanjut
                 </a>
@@ -172,4 +152,5 @@
         });
     </script>
 </body>
+
 </html>
